@@ -1,0 +1,16 @@
+###Protein grouping of X!tandem output post filtering
+
+**"group\_Xtandem\_Filtered.pl"** is a perl script used to remove redundant proteins identified with the same set of peptides when proteins are filtered using **"ProcessSearchResults.pl"** script in the [Proteomics Toolset](https://sourceforge.net/projects/proteomicstools/). When spectral files are searched against a target and a decoy database using X!tandem, ProcessSearchResults.pl filters peptides using a FDR.Hits from the target search were evaluated as possible outliers with respect to the decoy distribution and a probability score of being correct was associated to each. Peptides with at least 95% probability of being correct were accepted.
+
+When the target database used for protein identification with X!tandem is a composite database containing several strains of the same species, their is a chance that orthologues across species are identified with the same set of peptides over and over again. In such a scenario, if you only wish to retain a unique set of proteins in the result file that are of interest to you, group\_Xtandem\_Filtered.pl will remove all redundant entries and group them as one. 
+
+If two or more proteins are identified with identical set of spectra, only one protein ID (preferentially from genus of interest) would be retained in the protein list, the remaining protein IDs would be grouped together.  If two or more proteins were identified with identical set of spectra in the genus of interest, all those identifications were retained (in order to retain isoforms).  
+
+Script can be modified to reflect species of interest whose proteins you wish to retain. 
+
+**Reference:**
+
+1. Proteomic Analysis of Cross Protection Provided between Cold and Osmotic Stress in Listeria monocytogenes
+Joseph R. Pittman, Joe O. Buntyn, Gabriel Posadas, Bindu Nanduri, Ken Pendarvis, and Janet R. Donaldson
+Journal of Proteome Research 2014 13 (4), 1896-1904
+DOI: 10.1021/pr401004a
