@@ -3,6 +3,16 @@
 #Input file is Xtandem filtered output file from ProcessSearchResults.pl at : "http://sourceforge.net/projects/proteomicstools/"
 use strict;
 use Data::Dumper qw(Dumper);
+if(@ARGV!=4)
+{
+	print "Program to group proteins identified with the same set of (identical) peptides in a filtered Xtandem output\n";
+        print "\nUSAGE: \$perl group_Xtandem_Filtered.pl <Xtandem Filtered File> <Retained> <Protein-groups> <Processed Output>\n";
+        print "\n<Xtandem Filtered File>: Output File from ProcessSearchResults.pl\n";
+	print "<Retained>: Name of output file to save list of retained proteins in the processed Xtandem output\n";
+	print "<Protein-groups>: Name of output file to save list of all proteins idenfied with Xtandem and their group IDs\n";
+	print "<Processed Output>: Name of the output file to save the processed Xtandem Output retaining only one protein for each unique set of peptides (grouped)\n";
+	exit 0;
+}
 open FILE, "$ARGV[0]" or die $!;
 open OUT, "$ARGV[1]" or die $!;		#Final list of proteins that were retained in processed X!tandem_filtered file after grouping
 open GOUT, "$ARGV[2]" or die $!; 	#List of proteins and their group ids.
